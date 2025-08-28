@@ -7,12 +7,12 @@ const About = () => {
     {
       category: 'Frontend',
       icon: <Globe size={24} />,
-      technologies: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS']
+      technologies: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS' , 'React Native']
     },
     {
       category: 'Backend',
       icon: <Database size={24} />,
-      technologies: ['Node.js', 'Express', 'Python', 'MongoDB', 'MySQL', 'REST API']
+      technologies: ['Node.js', 'Express', 'Python', 'MongoDB', 'MySQL', 'REST API', 'Flask']
     },
     
     {
