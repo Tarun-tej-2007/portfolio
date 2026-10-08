@@ -16,42 +16,26 @@ function Footer() {
         <div className="case-col">
           <div className="log rise">
             <div className="logrow">
-              <div className="when">Jan 2024 — Present</div>
+              <div className="when">Apr 2026 — July 2026</div>
               <div>
                 <div className="what">
-                  <img alt="" className="co-ic" decoding="async" height="16" loading="lazy" src="logo/salaryse.webp" width="16" />
-                  SalarySe
+                  Onesol
                 </div>
-                <div className="role">Full Stack Developer · Gurgaon · Full-Time</div>
-                <div className="note">Credit, UPI, lending, leasing and payroll products, going 0&nbsp;→&nbsp;1.</div>
-              </div>
-              <div className="dur">2 yrs 8 mos</div>
-            </div>
-            
-            <div className="logrow">
-              <div className="when">Oct 2022 — Dec 2023</div>
-              <div>
-                <div className="what">
-                  <img alt="" className="co-ic" decoding="async" height="16" loading="lazy" src="logo/mridul-rohan.webp" width="16" />
-                  Mridul &amp; Rohan
+                <div className="role">Full-Stack Web Developer Intern</div>
+                <div className="note">
+                  <ul style={{ margin: 0, paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <li>Develop features for CREO-LABS, an AI-powered platform for generating and refining brand posters.</li>
+                    <li>Built and enhanced the brand onboarding workflow and contributed to the poster-generation experience.</li>
+                    <li>Developed production features using Next.js, FastAPI, AWS Lambda, AWS Bedrock, LangChain, REST APIs, and Git/GitHub.</li>
+                    <li>Contributed code that was merged into the main branch and deployed as part of the live product.</li>
+                    <li>Collaborated with the development team on user-facing functionality and gained practical experience with AI application architecture and service-to-service communication.</li>
+                  </ul>
                 </div>
-                <div className="role">UX Designer · Remote · Part-Time</div>
-                <div className="note">UX and UI across apps, sites and templates. Trained the interns who took it over.</div>
               </div>
-              <div className="dur">1 yr 3 mos</div>
-            </div>
-            
-            <div className="logrow">
-              <div className="when">Dec 2022 — Feb 2023</div>
-              <div>
-                <div className="what">
-                  <img alt="" className="co-ic" decoding="async" height="16" loading="lazy" src="logo/pharmallama.webp" width="16" />
-                  Pharmallama
-                </div>
-                <div className="role">UX Designer · Remote · Part-Time</div>
-                <div className="note">Led UX on a medication app seniors could actually use, and kept using.</div>
+              <div className="dur" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '16px' }}>
+                <span>4 mos</span>
+                <img alt="Onesol" decoding="async" src="logo/onesol.webp" style={{ width: '80px', height: 'auto', borderRadius: '4px' }} />
               </div>
-              <div className="dur">3 mos</div>
             </div>
           </div>
         </div>
@@ -88,7 +72,7 @@ function Footer() {
           </aside>
         </div>
         <div className="head-col rise">
-          <a aria-label="Resume, opens in a new tab" className="btn-skew btn-inline" href="https://oyearsh.vercel.app/resume/Arshvardhan_Bishnoi_Resume_Product_Designer.pdf" rel="noopener noreferrer" target="_blank">
+          <a aria-label="Resume, opens in a new tab" className="btn-skew btn-inline" href="/resume/TarunTej_Resume.pdf" rel="noopener noreferrer" target="_blank">
             <span className="btn-t">Resume</span>
           </a>
         </div>
@@ -98,12 +82,12 @@ function Footer() {
         <div className="case-col">
           <div className="foot">
             <ul className="socials">
-              <li><a href="https://www.linkedin.com/in/arshvardhanbishnoi" rel="noopener noreferrer" target="_blank">LinkedIn<span aria-hidden="true">↗</span></a></li>
-              <li><a href="https://www.behance.net/arshbishnoi" rel="noopener noreferrer" target="_blank">Behance<span aria-hidden="true">↗</span></a></li>
-              <li><a href="https://www.instagram.com/arshvardhanbishnoi" rel="noopener noreferrer" target="_blank">Instagram<span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.linkedin.com/in/kondeti-tarun-tej-b8a102344/" rel="noopener noreferrer" target="_blank" style={{ fontSize: '1rem' }}>LinkedIn<span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://github.com/Tarun-tej-2007" rel="noopener noreferrer" target="_blank" style={{ fontSize: '1rem' }}>GitHub<span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://x.com/TarunTej44" rel="noopener noreferrer" target="_blank" style={{ fontSize: '1rem' }}>Twitter<span aria-hidden="true">↗</span></a></li>
             </ul>
-            <span className="foot-me">Kondeti Tarun Tej · Full Stack Developer · Gurgaon</span>
-            <span className="foot-legal">© 2026 Kondeti Tarun Tej. All rights reserved.</span>
+            <span className="foot-me" style={{ fontSize: '0.85rem', marginTop: '16px' }}>Kondeti Tarun Tej · Full Stack Developer</span>
+            <span className="foot-legal" style={{ fontSize: '0.75rem', marginTop: '8px' }}>© 2026 Kondeti Tarun Tej. All rights reserved.</span>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ function Loadout() {
         <div className="loadout">
           {/* 1 — Education */}
           <div className="lo-block rise">
-            <p className="perks">Education</p>
+            <p className="perks" style={{ fontSize: '1.5rem' }}>Education</p>
             <div className="edu">
               <div className="card">
                 <div className="card-bar">
@@ -44,7 +44,7 @@ function Loadout() {
           
           {/* 2 — Equipped */}
           <div className="lo-block rise">
-            <p className="perks">Equipped</p>
+            <p className="perks" style={{ fontSize: '1.5rem' }}>Equipped</p>
             <ul className="tools">
               <li className="tool" style={{ '--x': 1, '--y': 31, '--x2': 2, '--y2': 4, '--lift': '-12px', '--dur': '3.4s', '--dl': '-0.4s' }}>
                 <img alt="Figma" decoding="async" height="280" loading="lazy" src="tool/figma.webp" width="280" />
@@ -75,12 +75,13 @@ function Loadout() {
           
           {/* 3 — Off the clock */}
           <div className="lo-block rise">
-            <p className="perks">Off the clock</p>
+            <p className="perks" style={{ fontSize: '1.5rem' }}>Off the clock</p>
             <ul className="bullets">
-              <li>Air-Rifle Shooting - 10 metre (National-Level; NRAI Member)</li>
-              <li>On the court - Basketball, Pickleball</li>
-              <li>Two Wheels - Motorcycling</li>
-              <li>Four Wheels - Sports cars to classic muscle cars to squatted SUVs, everything intrigues me</li>
+              <li>On the Court — Cricket · Badminton · Basketball · Pickleball</li>
+              <li>In the Water — Swimming</li>
+              <li>In the Saddle — Horse Riding</li>
+              <li>Two Wheels — Motorcycling</li>
+              <li>Four Wheels — Sports Cars · Classic Muscle · Off-road Builds</li>
             </ul>
 
           </div>

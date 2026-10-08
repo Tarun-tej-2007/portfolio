@@ -150,7 +150,7 @@ html {
 /* ── type roles ─────────────────────────────────────────────────────── */
 .kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--ink-muted);
@@ -261,7 +261,7 @@ html {
   left: 50%;
   translate: -50% 0;
   z-index: 100;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.25s var(--ease);
   /* 880, down from 1030 (Arsh, 2026-09-20) — the links are laid out
      space-between, so the panel's width IS the spacing between them. */
@@ -280,7 +280,7 @@ html {
     rgba(0, 0, 0, 0.38) 0 -12px 18px -6px inset,
     rgba(0, 0, 0, 0.3) 0 -2px 0 0 inset;
   overflow: hidden;
-  width: 124px; /* JS lerps this open to .nav-pos's width */
+  width: 100%;
   margin-inline: auto;
   will-change: width;
 }
@@ -309,7 +309,7 @@ html {
 }
 /* links fade in behind the opening panel rather than appearing with it */
 .nav-inner .lnk {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s var(--ease) 0.12s;
 }
 .nav-open .nav-inner .lnk {
@@ -3045,7 +3045,7 @@ html {
   align-items: center;
   gap: 9px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 1.1px;
   text-transform: uppercase;
   color: var(--ink-muted);

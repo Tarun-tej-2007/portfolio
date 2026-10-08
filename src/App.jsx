@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Navigation from './components/navigation/Navigation';
 import Hero from './components/sections/Hero';
-import Marquee from './components/sections/Marquee';
+
 import Player from './components/sections/Player';
 import Missions from './components/sections/Missions';
 import Loadout from './components/sections/Loadout';
@@ -75,7 +75,7 @@ function App() {
       <main id="top">
         <Hero />
         <div className="over">
-          <Marquee />
+
           <Player />
           <Missions />
           <Loadout />
