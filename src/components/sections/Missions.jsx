@@ -1,55 +1,71 @@
 const casesData = [
   {
-    slug: 'bbps',
-    title: 'BBPS (Bharat Bill Payment System)',
+    slug: 'codeatlas',
+    coverExt: 'png',
+    title: 'CODEATLAS',
     year: '2026',
-    brief: 'Electricity, mobile, internet and credit card bills brought inside SalarySe, cutting the manual chase and making what is owed visible.',
-    tools: 'Figma, ChatGPT, Adobe After Effects',
+    brief: 'Understanding a large codebase shouldn\'t require tracing thousands of files manually. CodeAtlas analyzes source code, resolves symbols and dependencies, builds architecture graphs, and turns the results into an interactive visual intelligence layer for developers.',
+    tools: 'Next.js, FastAPI, Python, Tree-sitter, PostgreSQL',
+    repoLink: 'https://github.com/Tarun-tej-2007/codeatlas',
+    caseStudyLink: 'https://github.com/Tarun-tej-2007/CodeAtlas/blob/main/README.md',
     stats: [
-      { num: '₹2.33 Cr', label: 'First-quarter bill payments' },
-      { num: '6.5x', label: 'Monthly payers in eight months' },
+      { num: '266+', label: 'Tests across the analysis engine' },
+      { num: 'Multi-layer', label: 'Architecture & dependency intelligence' },
     ]
   },
   {
-    slug: 'credit-on-upi',
-    title: 'CoBranded Credit Card with RBL Bank',
-    year: '2025',
-    brief: 'Turning UPI from a utility into a credit layer, so paying with credit needs no new habit, just the flow people already have.',
-    tools: 'Figma, Vercel, ChatGPT (Image Creation), Adobe After Effects',
+    slug: 'satquery',
+    coverExt: 'png',
+    title: 'SATQUERY AI',
+    year: '2026',
+    brief: 'Satellite Intelligence Platform',
+    tools: 'Next.js, FastAPI, Python, Sentinel-1, Sentinel-2',
+    repoLink: 'https://github.com/Tarun-tej-2007/sih-prototype',
+    caseStudyLink: 'https://github.com/Tarun-tej-2007/sih-prototype/blob/main/README.md',
     stats: [
-      { num: '10.7K+', label: 'RBL UP Cards issued' },
-      { num: '₹61 Cr+', label: 'Merchant payments powered on UPI' },
+      { num: 'S1 · S2', label: 'Multi-sensor Earth observation' },
     ]
   },
   {
-    slug: 'deals',
-    title: 'Deals - A Gift Cards Product',
+    slug: 'agridata',
+    coverExt: 'png',
+    title: 'AGRIDATA',
     year: '2025',
-    brief: 'Brand offers and gift cards in one place, built so the right one is found in seconds instead of hunted for.',
-    tools: 'Figma, ChatGPT (Image Creation), Adobe After Effects',
+    brief: 'Agricultural Intelligence Platform. Turning raw agricultural data into actionable intelligence. Agridata Copilot ingests and profiles datasets, detects anomalies, analyzes spatial indicators, surfaces insights, and generates decision-ready reports.',
+    tools: 'Next.js, FastAPI, Python, PostgreSQL, AI',
+    repoLink: 'https://github.com/Tarun-tej-2007/Agridata-Copilot',
+    caseStudyLink: 'https://github.com/Tarun-tej-2007/Agridata-Copilot/blob/main/README.md',
     stats: [
-      { num: '₹3 Cr+', label: 'Worth of gift cards bought per quarter' },
-      { num: '5.2x', label: 'Monthly gift card sales vs pre-revamp' },
+      { num: 'CSV · XLSX', label: 'Agricultural data ingestion' },
+      { num: 'AI → INSIGHTS', label: 'Data → intelligence → reports' },
     ]
   },
   {
-    slug: 'home-screen',
-    title: 'SalarySe HomeScreen Redesign',
+    slug: 'f1-insight',
+    coverExt: 'png',
+    title: 'F1 INSIGHT',
     year: '2025',
-    brief: 'SalarySe had outgrown its Credit-on-UPI identity. The home screen was still a shelf of shortcuts, so it was rebuilt as the way into an ecosystem.',
-    tools: 'Figma, ChatGPT (Image Creation), Adobe Illustrator',
-    impactDesc: 'A shortcut shelf rebuilt as a multi-product home.',
-    stats: []
+    brief: 'Formula 1 Analytics Platform. Formula 1 data is everywhere, but understanding performance takes more than race results. F1 Insight brings drivers, teams, races, standings, points progression, and pit-stop efficiency into one interactive analytics platform.',
+    tools: 'React, Vite, Node.js, Express, MongoDB, Recharts',
+    repoLink: 'https://f1insighgt.netlify.app/',
+    caseStudyLink: 'https://github.com/Tarun-tej-2007/f1insight',
+    stats: [
+      { num: '24+', label: 'Races analyzed' },
+      { num: 'DATA → INSIGHT', label: 'Driver · Team · Race analytics' },
+    ]
   },
   {
-    slug: 'salaryse-upi',
-    title: 'SalarySe UPI - A Payments Product',
-    year: '2024',
-    brief: 'The app itself: UPI speed carrying credit-backed payments, instant cash and spend management in a single flow.',
-    tools: 'Figma and the good old Internet',
+    slug: 'factify',
+    coverExt: 'png',
+    title: 'FACTIFY',
+    year: '2025',
+    brief: 'Content Verification Platform. The internet moves faster than fact-checking. Factify gives users a quick way to verify links, claims, news, and media — combining AI analysis with security checks to surface suspicious content before it is trusted or shared.',
+    tools: 'React Native, Expo, TypeScript, Node.js, Express, Gemini',
+    repoLink: 'https://github.com/Tarun-tej-2007/Factify',
+    caseStudyLink: 'https://github.com/Tarun-tej-2007/Factify/blob/finalpush/README.md',
     stats: [
-      { num: '53K+', label: 'Monthly transacting users, from 26' },
-      { num: '₹15.35 Cr', label: 'Quarterly payment value, up 5.8x' },
+      { num: 'URL · TEXT · MEDIA', label: 'Multi-format verification' },
+      { num: 'AI + SECURITY', label: 'Gemini · Safe Browsing · VirusTotal' },
     ]
   }
 ];
@@ -60,7 +76,7 @@ function CaseItem({ data, index }) {
       <div className="case-bar">
         <div className="case-bar-l">
           <h3 className="case-title">{data.title}</h3>
-          <a aria-label={`View case study: ${data.title}`} className="btn-skew btn-mini js-case" href="#">
+          <a aria-label={`View case study: ${data.title}`} className={`btn-skew btn-mini ${data.repoLink ? '' : 'js-case'}`} href={data.repoLink || "#"} target={data.repoLink ? "_blank" : "_self"} rel="noopener noreferrer">
             <span className="btn-t">→</span>
           </a>
         </div>
@@ -69,7 +85,7 @@ function CaseItem({ data, index }) {
       <div className="case-body">
         <div className="case-main">
           <div className="case-cover">
-            <img alt="" aria-hidden="true" decoding="async" loading="lazy" src={`case/${data.slug}/cover.webp`} />
+            <img alt="" aria-hidden="true" decoding="async" loading="lazy" src={`case/${data.slug}/cover.${data.coverExt || 'webp'}`} />
           </div>
           <div className="case-brief">
             <p className="case-lab">Brief</p>
@@ -94,7 +110,7 @@ function CaseItem({ data, index }) {
             </div>
           )}
           
-          <a className="btn-skew js-case" href="#">
+          <a className={`btn-skew ${data.caseStudyLink ? '' : 'js-case'}`} href={data.caseStudyLink || "#"} target={data.caseStudyLink ? "_blank" : "_self"} rel="noopener noreferrer">
             <span className="btn-t">
               View Case Study
               <span aria-hidden="true" className="btn-ar">→</span>
