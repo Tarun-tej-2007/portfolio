@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 function Hero() {
+  const [showDlg, setShowDlg] = useState(false);
+
   return (
     <section className="hero">
       <img alt="" aria-hidden="true" className="sky" decoding="async" src="sprites/sky-night.webp" />
@@ -18,14 +22,14 @@ function Hero() {
         </a>
       </div>
       
-      <div className="hintwrap">
-        <div className="tabhint" id="tabHint" role="button" tabIndex="0">
-          press <kbd>tab</kbd> to continue
+      <div className={`hintwrap ${showDlg ? 'dlg-live' : ''}`}>
+        <div className="tabhint" id="tabHint" role="button" tabIndex="0" onClick={() => setShowDlg(true)}>
+          click to continue
         </div>
-        <div aria-live="polite" className="dlg" id="dlg" tabIndex="-1">
+        <div aria-live="polite" className={`dlg ${showDlg ? 'show' : ''}`} id="dlg" tabIndex="-1">
           <span className="who" id="dlgWho"></span>
-          <span id="dlgText"></span>
-          <span className="caret" hidden id="dlgCaret">▶</span>
+          <span id="dlgText">The team is ready. Scope agreed, flows signed off, build underway.</span>
+          <span className="caret" id="dlgCaret">▶</span>
         </div>
       </div>
       

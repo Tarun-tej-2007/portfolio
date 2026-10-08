@@ -59,16 +59,30 @@ function Footer() {
             <br />
             <span className="ln">properly?</span>
           </h2>
-          <aside className="chan">
-            <p className="chan-top">
-              <span className="badge">Direct</span>
-              <span className="chan-no">Channel 01</span>
-            </p>
-            <h3 className="chan-title">WhatsApp</h3>
-            <p className="chan-desc">Send a message. No filling forms, no scheduling a call. Get a reply within 24 hrs.</p>
-            <a className="btn-skew chan-btn" href="https://wa.me/919555800002" rel="noopener noreferrer" target="_blank">
-              <span className="btn-t">Message now</span>
-            </a>
+          <aside className="chan" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div>
+              <p className="chan-top">
+                <span className="badge">Direct</span>
+                <span className="chan-no">Channel 01</span>
+              </p>
+              <h3 className="chan-title">WhatsApp</h3>
+              <p className="chan-desc">Send a message directly. No forms, no fuss.</p>
+              <a className="btn-skew chan-btn" href="https://wa.me/918328394354" rel="noopener noreferrer" target="_blank">
+                <span className="btn-t">Message</span>
+              </a>
+            </div>
+
+            <div style={{ paddingTop: '20px', borderTop: '1px solid var(--hairline)' }}>
+              <p className="chan-top">
+                <span className="badge">Direct</span>
+                <span className="chan-no">Channel 02</span>
+              </p>
+              <h3 className="chan-title">Email</h3>
+              <p className="chan-desc">Drop an email anytime. Get a reply within 24 hrs.</p>
+              <a className="btn-skew chan-btn" href="mailto:taruntej947@gmail.com" rel="noopener noreferrer">
+                <span className="btn-t">Email Me</span>
+              </a>
+            </div>
           </aside>
         </div>
         <div className="head-col rise">
