@@ -50,8 +50,61 @@ function App() {
     };
   }, [loading]);
 
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBtn(window.scrollY > 800);
+      
+      // Parallax for sky
+      const sky = document.querySelector('.sky');
+      if (sky) {
+        sky.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+      }
+    };
+    
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "⏸ Game Paused...";
+      } else {
+        document.title = "Kondeti Tarun Tej — Full Stack Developer";
+      }
+    };
+
+    const handleBlur = () => setIsPaused(true);
+    
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleBlur);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, []);
+
   return (
     <div className="ab-root" id="root">
+      {isPaused && (
+        <div className="pause-overlay">
+          <div className="pause-content">
+            <h2>GAME PAUSED</h2>
+            <button className="btn-skew" style={{ marginTop: '1rem', fontSize: '1.2rem', padding: '16px 32px' }} onClick={() => setIsPaused(false)}>
+              <span className="btn-t">Resume Game</span>
+            </button>
+          </div>
+        </div>
+      )}
+      <div className="cursor-aura" style={{ left: mousePos.x, top: mousePos.y }} />
       {loading && (
         <div aria-live="polite" className="boot" id="boot" role="status" style={{ opacity: progress === 100 ? 0 : 1, transition: 'opacity 0.5s' }}>
           <div className="boot-box">
@@ -75,13 +128,20 @@ function App() {
       <main id="top">
         <Hero />
         <div className="over">
-
           <Player />
           <Missions />
           <Loadout />
           <Footer />
         </div>
       </main>
+
+      <button 
+        className={`back-to-top ${showTopBtn ? 'show' : ''}`} 
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+      >
+        ↑ Top
+      </button>
     </div>
   );
 }

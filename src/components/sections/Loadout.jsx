@@ -48,27 +48,35 @@ function Loadout() {
             <ul className="tools">
               <li className="tool" style={{ '--x': 1, '--y': 31, '--x2': 2, '--y2': 4, '--lift': '-12px', '--dur': '3.4s', '--dl': '-0.4s' }}>
                 <img alt="Figma" decoding="async" height="280" loading="lazy" src="tool/figma.webp" width="280" />
+                <span className="tooltip">Figma</span>
               </li>
               <li className="tool" style={{ '--x': 14, '--y': 9, '--x2': 28, '--y2': 16, '--lift': '-16px', '--dur': '4.1s', '--dl': '-2.2s' }}>
                 <img alt="Claude" decoding="async" height="280" loading="lazy" src="tool/claude.webp" width="280" />
+                <span className="tooltip">Claude</span>
               </li>
               <li className="tool" style={{ '--x': 26, '--y': 56, '--x2': 54, '--y2': 8, '--lift': '-9px', '--dur': '3.0s', '--dl': '-1.5s' }}>
                 <img alt="Gemini" decoding="async" height="280" loading="lazy" src="tool/gemini.webp" width="280" />
+                <span className="tooltip">Gemini</span>
               </li>
               <li className="tool" style={{ '--x': 39, '--y': 20, '--x2': 80, '--y2': 22, '--lift': '-14px', '--dur': '3.7s', '--dl': '-2.9s' }}>
                 <img alt="ChatGPT" decoding="async" height="280" loading="lazy" src="tool/chatgpt.webp" width="280" />
+                <span className="tooltip">ChatGPT</span>
               </li>
               <li className="tool" style={{ '--x': 52, '--y': 62, '--x2': 8, '--y2': 56, '--lift': '-11px', '--dur': '4.4s', '--dl': '-0.9s' }}>
                 <img alt="Perplexity" decoding="async" height="280" loading="lazy" src="tool/perplexity.webp" width="280" />
+                <span className="tooltip">Perplexity</span>
               </li>
               <li className="tool" style={{ '--x': 64, '--y': 4, '--x2': 33, '--y2': 72, '--lift': '-12px', '--dur': '3.2s', '--dl': '-2.5s' }}>
                 <img alt="Vercel" decoding="async" height="280" loading="lazy" src="tool/vercel.webp" width="280" />
+                <span className="tooltip">Vercel</span>
               </li>
               <li className="tool" style={{ '--x': 77, '--y': 43, '--x2': 58, '--y2': 62, '--lift': '-10px', '--dur': '3.9s', '--dl': '-1.1s' }}>
                 <img alt="VS Code" decoding="async" height="280" loading="lazy" src="tool/vs-code.webp" width="280" />
+                <span className="tooltip">VS Code</span>
               </li>
               <li className="tool" style={{ '--x': 90, '--y': 26, '--x2': 80, '--y2': 78, '--lift': '-13px', '--dur': '4.6s', '--dl': '-3.4s' }}>
                 <img alt="Google Stitch" decoding="async" height="280" loading="lazy" src="tool/google-stitch.webp" width="280" />
+                <span className="tooltip">Google Stitch</span>
               </li>
             </ul>
           </div>

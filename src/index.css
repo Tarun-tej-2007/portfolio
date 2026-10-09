@@ -3289,3 +3289,192 @@ html {
     text-align: center;
   }
 }
+
+/* ── Upgrades ──────────────────────────────────────────────────────── */
+
+/* Custom Dark-Theme Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--void-400);
+  border-radius: 5px;
+  border: 2px solid var(--void-100);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Glow on Mission Cards */
+.case {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.case:hover {
+  box-shadow: 0 0 35px rgba(0, 210, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Tooltips for Floating Tools */
+.tool {
+  cursor: help;
+}
+.tooltip {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--void-800);
+  color: var(--ink);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.tool:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  background: var(--void-800);
+  color: var(--ink);
+  padding: 12px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--void-600);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Aura Cursor Effect */
+.cursor-aura {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,210,255,0.08) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* CRT Scanlines on Loading Screen */
+.boot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Tool Pills in Missions */
+.tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.tool-pill {
+  background: var(--void-800);
+  color: var(--ink-body);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  border: 1px solid var(--hairline);
+  letter-spacing: 0.5px;
+}
+
+/* Cyberpunk Glitch on Buttons */
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 1px) }
+  40% { transform: translate(-1px, -1px) }
+  60% { transform: translate(2px, 1px) }
+  80% { transform: translate(1px, -1px) }
+  100% { transform: translate(0) }
+}
+.btn-skew:hover .btn-t {
+  animation: glitch-anim 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+/* Static Noise Overlay */
+.ab-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Game Paused Overlay */
+.pause-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ink);
+}
+.pause-content {
+  text-align: center;
+  animation: levitate 4s ease-in-out infinite;
+}
+.pause-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0px var(--accent), -2px -2px 0px #ff00ff;
+}
+.pause-content p {
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: blink-caret 2s step-end infinite;
+}
+
+

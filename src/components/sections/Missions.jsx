@@ -94,7 +94,11 @@ function CaseItem({ data, index }) {
         </div>
         <aside className="case-side">
           <p className="case-lab rule">Tool Stack</p>
-          <p className="case-val">{data.tools}</p>
+          <div className="tool-pills">
+            {data.tools.split(',').map(tool => (
+              <span key={tool.trim()} className="tool-pill">{tool.trim()}</span>
+            ))}
+          </div>
           <p className="case-lab rule" style={{ marginTop: '22px' }}>Impact</p>
           
           {data.impactDesc && <p className="case-val">{data.impactDesc}</p>}

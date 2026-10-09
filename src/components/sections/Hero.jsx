@@ -1,7 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Hero() {
   const [showDlg, setShowDlg] = useState(false);
+  const [nameText, setNameText] = useState('');
+  const fullName = "Kondeti Tarun Tej.";
+
+  useEffect(() => {
+    let i = 0;
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setNameText(fullName.substring(0, i + 1));
+        i++;
+        if (i >= fullName.length) clearInterval(interval);
+      }, 70); // typing speed
+      return () => clearInterval(interval);
+    }, 1200); // Wait for loading screen
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="hero">
@@ -10,7 +25,7 @@ function Hero() {
         <h1 className="display h-hero">
           <span className="ln">Welcome, this is</span>
           <br />
-          <span className="ln">Kondeti Tarun Tej.</span>
+          <span className="ln">{nameText}<span className="caret" style={{ animation: 'blink 1s step-end infinite', display: 'inline-block', marginLeft: '2px', color: 'var(--accent)' }}></span></span>
         </h1>
         <p className="hero-sub">
           Tarun is a Full Stack Developer building scalable web applications, 
