@@ -1,9 +1,13 @@
+import { useState } from 'react';
+import { sfx } from '../../utils/sfx';
+
 const casesData = [
   {
     slug: 'codeatlas',
     coverExt: 'png',
     title: 'CODEATLAS',
     year: '2026',
+    categories: ['all', 'ai', 'data'],
     brief: 'Understanding a large codebase shouldn\'t require tracing thousands of files manually. CodeAtlas analyzes source code, resolves symbols and dependencies, builds architecture graphs, and turns the results into an interactive visual intelligence layer for developers.',
     tools: 'Next.js, FastAPI, Python, Tree-sitter, PostgreSQL',
     repoLink: 'https://github.com/Tarun-tej-2007/codeatlas',
@@ -18,7 +22,8 @@ const casesData = [
     coverExt: 'png',
     title: 'SATQUERY AI',
     year: '2026',
-    brief: 'Satellite Intelligence Platform',
+    categories: ['all', 'ai', 'fullstack'],
+    brief: 'Satellite Intelligence Platform. Next-generation geospatial intelligence platform ingesting and processing Sentinel-1 SAR and Sentinel-2 optical imagery to monitor environmental patterns, flood risks, and land use changes.',
     tools: 'Next.js, FastAPI, Python, Sentinel-1, Sentinel-2',
     repoLink: 'https://github.com/Tarun-tej-2007/sih-prototype',
     caseStudyLink: 'https://github.com/Tarun-tej-2007/sih-prototype/blob/main/README.md',
@@ -31,6 +36,7 @@ const casesData = [
     coverExt: 'png',
     title: 'AGRIDATA',
     year: '2025',
+    categories: ['all', 'ai', 'data'],
     brief: 'Agricultural Intelligence Platform. Turning raw agricultural data into actionable intelligence. Agridata Copilot ingests and profiles datasets, detects anomalies, analyzes spatial indicators, surfaces insights, and generates decision-ready reports.',
     tools: 'Next.js, FastAPI, Python, PostgreSQL, AI',
     repoLink: 'https://github.com/Tarun-tej-2007/Agridata-Copilot',
@@ -45,6 +51,7 @@ const casesData = [
     coverExt: 'png',
     title: 'F1 INSIGHT',
     year: '2025',
+    categories: ['all', 'fullstack', 'data'],
     brief: 'Formula 1 Analytics Platform. Formula 1 data is everywhere, but understanding performance takes more than race results. F1 Insight brings drivers, teams, races, standings, points progression, and pit-stop efficiency into one interactive analytics platform.',
     tools: 'React, Vite, Node.js, Express, MongoDB, Recharts',
     repoLink: 'https://f1insighgt.netlify.app/',
@@ -59,6 +66,7 @@ const casesData = [
     coverExt: 'png',
     title: 'FACTIFY',
     year: '2025',
+    categories: ['all', 'ai', 'fullstack'],
     brief: 'Content Verification Platform. The internet moves faster than fact-checking. Factify gives users a quick way to verify links, claims, news, and media — combining AI analysis with security checks to surface suspicious content before it is trusted or shared.',
     tools: 'React Native, Expo, TypeScript, Node.js, Express, Gemini',
     repoLink: 'https://github.com/Tarun-tej-2007/Factify',
@@ -70,13 +78,27 @@ const casesData = [
   }
 ];
 
+const filterCategories = [
+  { id: 'all', label: 'ALL MISSIONS' },
+  { id: 'ai', label: 'AI & INTELLIGENCE' },
+  { id: 'fullstack', label: 'FULL STACK & WEB' },
+  { id: 'data', label: 'DATA & DEV TOOLS' },
+];
+
 function CaseItem({ data, index }) {
   return (
-    <article className="case" style={{ '--i': index }}>
+    <article className="case" style={{ '--i': index }} onMouseEnter={() => sfx.playHover()}>
       <div className="case-bar">
         <div className="case-bar-l">
           <h3 className="case-title">{data.title}</h3>
-          <a aria-label={`View case study: ${data.title}`} className={`btn-skew btn-mini ${data.repoLink ? '' : 'js-case'}`} href={data.repoLink || "#"} target={data.repoLink ? "_blank" : "_self"} rel="noopener noreferrer">
+          <a 
+            aria-label={`View case study: ${data.title}`} 
+            className={`btn-skew btn-mini ${data.repoLink ? '' : 'js-case'}`} 
+            href={data.repoLink || "#"} 
+            target={data.repoLink ? "_blank" : "_self"} 
+            rel="noopener noreferrer"
+            onClick={() => sfx.playClick()}
+          >
             <span className="btn-t">→</span>
           </a>
         </div>
@@ -101,8 +123,6 @@ function CaseItem({ data, index }) {
           </div>
           <p className="case-lab rule" style={{ marginTop: '22px' }}>Impact</p>
           
-          {data.impactDesc && <p className="case-val">{data.impactDesc}</p>}
-          
           {data.stats.length > 0 && (
             <div className="stats">
               {data.stats.map((stat, i) => (
@@ -114,7 +134,13 @@ function CaseItem({ data, index }) {
             </div>
           )}
           
-          <a className={`btn-skew ${data.caseStudyLink ? '' : 'js-case'}`} href={data.caseStudyLink || "#"} target={data.caseStudyLink ? "_blank" : "_self"} rel="noopener noreferrer">
+          <a 
+            className={`btn-skew ${data.caseStudyLink ? '' : 'js-case'}`} 
+            href={data.caseStudyLink || "#"} 
+            target={data.caseStudyLink ? "_blank" : "_self"} 
+            rel="noopener noreferrer"
+            onClick={() => sfx.playClick()}
+          >
             <span className="btn-t">
               View Case Study
               <span aria-hidden="true" className="btn-ar">→</span>
@@ -126,7 +152,22 @@ function CaseItem({ data, index }) {
   );
 }
 
-function Missions() {
+function Missions({ onTriggerAchievement }) {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredCases = casesData.filter((c) => 
+    c.categories.includes(activeFilter)
+  );
+
+  const handleFilterClick = (filterId) => {
+    sfx.playClick();
+    setActiveFilter(filterId);
+
+    if (onTriggerAchievement) {
+      onTriggerAchievement('arsenal_filter', 'Arsenal Filtered', 'Inspected specialized project loadouts', 75);
+    }
+  };
+
   return (
     <section className="sec wrap" id="missions">
       <div className="sec-head rise">
@@ -138,11 +179,36 @@ function Missions() {
             <span className="ln">missions.</span>
           </h2>
         </div>
-        <div aria-hidden="true" className="hp" data-hp="6"></div>
+      </div>
+
+      {/* Arcade Category Filter Bar */}
+      <div className="mission-filter-bar rise">
+        <span className="filter-prompt">&gt; FILTER:</span>
+        <div className="filter-chips">
+          {filterCategories.map((cat) => {
+            const count = cat.id === 'all' 
+              ? casesData.length 
+              : casesData.filter(c => c.categories.includes(cat.id)).length;
+            const isActive = activeFilter === cat.id;
+
+            return (
+              <button
+                key={cat.id}
+                className={`filter-chip ${isActive ? 'active' : ''}`}
+                onClick={() => handleFilterClick(cat.id)}
+                onMouseEnter={() => sfx.playHover()}
+              >
+                <span className="chip-indicator">{isActive ? '▶' : '◇'}</span>
+                <span className="chip-label">{cat.label}</span>
+                <span className="chip-count">[{count}]</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
       
-      <div className="cases case-col" style={{ '--n': casesData.length }}>
-        {casesData.map((c, i) => (
+      <div className="cases case-col" style={{ '--n': filteredCases.length }}>
+        {filteredCases.map((c, i) => (
           <CaseItem key={c.slug} data={c} index={i} />
         ))}
       </div>

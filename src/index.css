@@ -3477,4 +3477,541 @@ html {
   animation: blink-caret 2s step-end infinite;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM ENHANCEMENTS: HUD, TERMINAL, TOASTS, FILTERS & OVERDRIVE
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* 1. Telemetry HUD Bar */
+.telemetry-bar {
+  position: relative;
+  z-index: 999;
+  width: 100%;
+  background: rgba(10, 10, 12, 0.85);
+  border-bottom: 1px solid var(--hairline);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--ink-muted);
+}
+.telemetry-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.telem-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.telem-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.telem-lbl {
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+.telem-val {
+  color: var(--ink-body);
+}
+.telem-val.green-glow {
+  color: #00ff88;
+  text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+}
+.telem-sep {
+  color: var(--hairline);
+  user-select: none;
+}
+.telem-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.telem-btn {
+  background: var(--void-800);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.telem-btn:hover {
+  background: var(--void-700);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
+}
+.telem-btn.muted {
+  opacity: 0.6;
+  border-color: #555;
+}
+.telem-kbd {
+  background: var(--void-900);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 9px;
+  color: var(--accent);
+  border: 1px solid var(--hairline);
+}
+
+@media (max-width: 768px) {
+  .telem-hide-mobile {
+    display: none;
+  }
+  .telemetry-inner {
+    justify-content: space-between;
+  }
+}
+
+/* 2. Navigation Quick Controls */
+.nav-term-btn,
+.nav-sound-btn {
+  background: var(--void-800);
+  border: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+}
+.nav-term-btn:hover,
+.nav-sound-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 8px rgba(255, 77, 0, 0.3);
+}
+.navmenu-term-btn {
+  background: var(--void-800);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 12px;
+  text-align: left;
+}
+
+/* 3. Dev Terminal Modal */
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+.terminal-window {
+  width: 100%;
+  max-width: 800px;
+  height: 520px;
+  background: #0c0d10;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 30px rgba(255, 77, 0, 0.25), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+.terminal-window.matrix-bg {
+  border-color: #00ff66;
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
+}
+.terminal-window.matrix-bg pre,
+.terminal-window.matrix-bg .term-prompt,
+.terminal-window.matrix-bg .term-input {
+  color: #00ff66 !important;
+  text-shadow: 0 0 6px #00ff66;
+}
+.terminal-header {
+  background: #15171d;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--hairline);
+  user-select: none;
+}
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.term-red { background: #ff5f56; }
+.term-yellow { background: #ffbd2e; }
+.term-green { background: #27c93f; }
+.terminal-title {
+  margin: 0 auto;
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 1px;
+}
+.terminal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+}
+.terminal-close-btn:hover {
+  color: var(--ink);
+}
+.terminal-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.term-line pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+}
+.term-system {
+  color: var(--ink-muted);
+}
+.term-input {
+  color: var(--ink);
+}
+.term-output {
+  color: #d1d5db;
+}
+.term-error {
+  color: #ff4757;
+}
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.term-prompt {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.term-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* 4. Achievement Toasts */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10005;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+  pointer-events: none;
+}
+.toast-card {
+  pointer-events: auto;
+  background: rgba(18, 18, 22, 0.95);
+  border: 1px solid var(--accent);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 77, 0, 0.25);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  backdrop-filter: blur(8px);
+  animation: slideInToast 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.toast-konami {
+  border-color: #00ffcc;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 255, 204, 0.4);
+}
+.toast-copy {
+  border-color: #00ff88;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 255, 136, 0.3);
+}
+@keyframes slideInToast {
+  from { transform: translateX(50px) translateY(10px); opacity: 0; }
+  to { transform: translateX(0) translateY(0); opacity: 1; }
+}
+.toast-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+.toast-info {
+  flex: 1;
+}
+.toast-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.toast-konami .toast-tag {
+  color: #00ffcc;
+}
+.toast-copy .toast-tag {
+  color: #00ff88;
+}
+.toast-xp {
+  background: rgba(255, 77, 0, 0.2);
+  color: #ffaa00;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+}
+.toast-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+}
+.toast-desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.toast-close {
+  background: transparent;
+  border: none;
+  color: var(--ink-faint);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.toast-close:hover {
+  color: var(--ink);
+}
+
+/* 5. Interactive HP & Float numbers */
+.hp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  margin-top: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.hp-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.hp-hearts {
+  display: flex;
+  gap: 6px;
+}
+.hp-heart {
+  font-size: 20px;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.hp-heart.filled {
+  color: #ff3366;
+  text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+  animation: heartPulse 1.8s ease-in-out infinite;
+}
+.hp-heart.empty {
+  color: #333;
+  text-shadow: none;
+}
+.hp-hearts:hover .hp-heart {
+  transform: scale(1.15);
+}
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.hp-float {
+  position: absolute;
+  top: -24px;
+  left: 30px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  animation: floatUpDamage 1.8s forwards;
+  pointer-events: none;
+  white-space: nowrap;
+}
+@keyframes floatUpDamage {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; transform: translateY(-8px); }
+  80% { opacity: 1; transform: translateY(-16px); }
+  100% { opacity: 0; transform: translateY(-24px); }
+}
+
+/* 6. Holographic 3D Player Card & Overdrive */
+.pcard {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.2s ease;
+}
+.holo-sheen {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 5;
+}
+.pcard-overdrive {
+  border: 1px solid transparent !important;
+  background: 
+    linear-gradient(#0e0f12, #0e0f12) padding-box,
+    linear-gradient(90deg, #ff007f, #00f0ff, #00ff88, #ffbd2e, #ff007f) border-box !important;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.35) !important;
+}
+.rainbow-text {
+  background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff88, #ffbd2e, #ff007f);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 3s linear infinite;
+  font-weight: 700;
+}
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+.cursor-aura.aura-rainbow {
+  background: radial-gradient(
+    circle, 
+    rgba(0, 255, 200, 0.3) 0%, 
+    rgba(255, 0, 150, 0.2) 40%, 
+    transparent 70%
+  );
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+}
+
+/* 7. Mission Category Filter Tabs */
+.mission-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 20px;
+  flex-wrap: wrap;
+}
+.filter-prompt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filter-chip {
+  background: var(--void-800);
+  border: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.filter-chip:hover {
+  background: var(--void-700);
+  color: var(--ink);
+  border-color: var(--accent);
+}
+.filter-chip.active {
+  background: rgba(255, 77, 0, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 77, 0, 0.25);
+}
+.chip-indicator {
+  font-size: 9px;
+  color: var(--accent);
+}
+.chip-count {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* 8. Copy Chip Button in Footer */
+.btn-copy-chip {
+  background: var(--void-800);
+  border: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-copy-chip:hover {
+  border-color: #00ff88;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.25);
+}
+
+
 

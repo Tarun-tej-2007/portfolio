@@ -1,4 +1,20 @@
-function Footer() {
+import { sfx } from '../../utils/sfx';
+
+function Footer({ onTriggerToast }) {
+  const handleCopy = (text, label) => {
+    navigator.clipboard.writeText(text);
+    sfx.playAchievement();
+    if (onTriggerToast) {
+      onTriggerToast({
+        id: Date.now(),
+        type: 'copy',
+        tag: 'ITEM ACQUIRED',
+        title: text,
+        desc: `${label} copied to clipboard!`
+      });
+    }
+  };
+
   return (
     <>
       <section className="sec wrap" id="record">
@@ -15,7 +31,7 @@ function Footer() {
         </div>
         <div className="case-col">
           <div className="log rise">
-            <div className="logrow">
+            <div className="logrow" onMouseEnter={() => sfx.playHover()}>
               <div className="when">Apr 2026 — July 2026</div>
               <div>
                 <div className="what">
@@ -67,9 +83,26 @@ function Footer() {
               </p>
               <h3 className="chan-title">WhatsApp</h3>
               <p className="chan-desc">Send a message directly. No forms, no fuss.</p>
-              <a className="btn-skew chan-btn" href="https://wa.me/918328394354" rel="noopener noreferrer" target="_blank">
-                <span className="btn-t">Message</span>
-              </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <a 
+                  className="btn-skew chan-btn" 
+                  href="https://wa.me/918328394354" 
+                  rel="noopener noreferrer" 
+                  target="_blank"
+                  onMouseEnter={() => sfx.playHover()}
+                  onClick={() => sfx.playClick()}
+                >
+                  <span className="btn-t">Message</span>
+                </a>
+                <button 
+                  type="button" 
+                  className="btn-copy-chip"
+                  onMouseEnter={() => sfx.playHover()}
+                  onClick={() => handleCopy('+918328394354', 'WhatsApp Number')}
+                >
+                  [Copy +91 8328394354 📋]
+                </button>
+              </div>
             </div>
 
             <div style={{ paddingTop: '20px', borderTop: '1px solid var(--hairline)' }}>
@@ -79,15 +112,39 @@ function Footer() {
               </p>
               <h3 className="chan-title">Email</h3>
               <p className="chan-desc">Drop an email anytime. Get a reply within 24 hrs.</p>
-              <a className="btn-skew chan-btn" href="mailto:taruntej947@gmail.com" rel="noopener noreferrer">
-                <span className="btn-t">Email Me</span>
-              </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <a 
+                  className="btn-skew chan-btn" 
+                  href="mailto:taruntej947@gmail.com" 
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => sfx.playHover()}
+                  onClick={() => sfx.playClick()}
+                >
+                  <span className="btn-t">Email Me</span>
+                </a>
+                <button 
+                  type="button" 
+                  className="btn-copy-chip"
+                  onMouseEnter={() => sfx.playHover()}
+                  onClick={() => handleCopy('taruntej947@gmail.com', 'Email Address')}
+                >
+                  [Copy taruntej947@gmail.com 📋]
+                </button>
+              </div>
             </div>
           </aside>
         </div>
         <div className="head-col rise">
-          <a aria-label="Resume, opens in a new tab" className="btn-skew btn-inline" href="/resume/TarunTej_Resume.pdf" rel="noopener noreferrer" target="_blank">
-            <span className="btn-t">Resume</span>
+          <a 
+            aria-label="Resume, opens in a new tab" 
+            className="btn-skew btn-inline" 
+            href="/resume/TarunTej_Resume.pdf" 
+            rel="noopener noreferrer" 
+            target="_blank"
+            onMouseEnter={() => sfx.playHover()}
+            onClick={() => sfx.playClick()}
+          >
+            <span className="btn-t">Resume ↗</span>
           </a>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { sfx } from '../../utils/sfx';
 
-function Hero() {
+function Hero({ onTriggerAchievement }) {
   const [showDlg, setShowDlg] = useState(false);
   const [nameText, setNameText] = useState('');
   const fullName = "Kondeti Tarun Tej.";
@@ -18,6 +19,14 @@ function Hero() {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleDialogueClick = () => {
+    sfx.playClick();
+    setShowDlg(true);
+    if (onTriggerAchievement) {
+      onTriggerAchievement('lore_unlocked', 'Briefing Received', 'Listened to the team dialogue briefing', 30);
+    }
+  };
+
   return (
     <section className="hero">
       <img alt="" aria-hidden="true" className="sky" decoding="async" src="sprites/sky-night.webp" />
@@ -32,13 +41,25 @@ function Hero() {
           AI-powered products, and developer platforms. Currently working across the 
           stack with React, Next.js, Node.js, Python, and FastAPI, taking products from 0&nbsp;&rarr;&nbsp;1.
         </p>
-        <a className="btn-skew hero-cta" href="#missions">
+        <a 
+          className="btn-skew hero-cta" 
+          href="#missions"
+          onMouseEnter={() => sfx.playHover()}
+          onClick={() => sfx.playClick()}
+        >
           <span className="btn-t">View Missions</span>
         </a>
       </div>
       
       <div className={`hintwrap ${showDlg ? 'dlg-live' : ''}`}>
-        <div className="tabhint" id="tabHint" role="button" tabIndex="0" onClick={() => setShowDlg(true)}>
+        <div 
+          className="tabhint" 
+          id="tabHint" 
+          role="button" 
+          tabIndex="0" 
+          onClick={handleDialogueClick}
+          onMouseEnter={() => sfx.playHover()}
+        >
           click to continue
         </div>
         <div aria-live="polite" className={`dlg ${showDlg ? 'show' : ''}`} id="dlg" tabIndex="-1">
